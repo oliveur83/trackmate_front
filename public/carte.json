@@ -1,0 +1,10 @@
+
+[
+{"id":11,"ue":"informatique" ,"title":" base","x":100 ,"y":50},
+{"id":12,"ue":"informatique" ,"title":" python","x":200 ,"y":100},
+{"id":13,"ue":"informatique" ,"title":" ia ","x":300 ,"y":50},
+{"id":14,"ue":"informatique" ,"title":" c","x":100 ,"y":150},
+{"id":15,"ue":"informatique" ,"title":" web ","x":300 ,"y":150},
+{"id":16,"ue":"informatique" ,"title":" html ","x":300 ,"y":250},
+{"id":17,"ue":"informatique" ,"title":" css","x":350 ,"y":250}
+]

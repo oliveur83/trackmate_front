@@ -34,15 +34,19 @@ let question = ref(false);
 const liste_QCM = ref([]);
 let num_qcm = ref(0);
 onMounted(async () => {
+  //http://127.0.0.1:8000/select_QCM
+  //http://localhost:3000/qcms
   axios
-    .get('http://127.0.0.1:8000/select_ue')
+    .get('http://localhost:3000/qcms')
     .then((response) => {
-      let data = JSON.parse(response.data);
-      console.log(data);
+      //let data = JSON.parse(response.data);
+      let data = response.data;
+    
       if (Array.isArray(data)) {
         data.forEach((obj) => {
           liste_QCM.value.push(obj.libelle);
         });
+     
       }
     })
     .catch((error) => {

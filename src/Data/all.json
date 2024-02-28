@@ -1,0 +1,133 @@
+{
+  "qcms": [
+    {  "libelle": "QCM MATH" },
+    {  "libelle": "Deuxième sujet" },
+    {  "libelle": "Troisième sujet" },
+    {  "libelle": "Quatrième sujet" }
+  ],
+  "questions": [
+    { "num_question": 11, "libelle": "Qu'est-ce que l'architecture de von Neumann ?" },
+    { "num_question": 12, "libelle": "Quelle est la différence entre un logiciel libre et un logiciel open source ?" },
+    { "num_question": 13, "libelle": "Quels sont les avantages et les inconvénients du Cloud Computing ?" },
+    { "num_question": 14, "libelle": "Qu'est-ce qu'une base de données relationnelle et comment fonctionne-t-elle ?" },
+    { "num_question": 15, "libelle": "Qu'est-ce qu'une attaque par force brute en sécurité informatique ?" },
+    { "num_question": 16, "libelle": "Quelle est la différence entre le protocole HTTP et le protocole HTTPS ?" },
+    { "num_question": 17, "libelle": "Quels sont les principaux types de cyberattaques et comment s'en protéger ?" },
+    { "num_question": 18, "libelle": "Qu'est-ce qu'un réseau de neurones artificiels et quelles sont ses applications ?" },
+    { "num_question": 19, "libelle": "Quelles sont les différences entre les langages de programmation interprétés et compilés ?" },
+    { "num_question": 20, "libelle": "Qu'est-ce que le machine learning et quels sont ses différents types ?" }
+  ],
+  "reponses": [
+    
+      { "nb_reponse": 1, "nb_question": 11, "juste_faux": true, "libelle": "Python est un langage de programmation populaire connu pour sa simplicité et sa lisibilité." },
+      { "nb_reponse": 2, "nb_question": 11, "juste_faux": false, "libelle": "Python est un langage de dessin vectoriel utilisé pour créer des images graphiques." },
+      { "nb_reponse": 3, "nb_question": 11, "juste_faux": false, "libelle": "Python est un framework JavaScript largement utilisé pour le développement web." },
+      { "nb_reponse": 4, "nb_question": 11, "juste_faux": false, "libelle": "Python est un protocole de communication utilisé dans les réseaux informatiques." },
+      { "nb_reponse": 1, "nb_question": 12, "juste_faux": true, "libelle": "La fonction principale d'un système d'exploitation est de gérer les ressources matérielles et logicielles d'un ordinateur." },
+      { "nb_reponse": 2, "nb_question": 12, "juste_faux": false, "libelle": "La fonction principale d'un système d'exploitation est de concevoir des applications logicielles." },
+      { "nb_reponse": 3, "nb_question": 12, "juste_faux": false, "libelle": "La fonction principale d'un système d'exploitation est de créer des composants matériels d'un ordinateur." },
+      { "nb_reponse": 4, "nb_question": 12, "juste_faux": false, "libelle": "La fonction principale d'un système d'exploitation est de stocker des données sur un réseau informatique." },
+      { "nb_reponse": 1, "nb_question": 13, "juste_faux": true, "libelle": "Un algorithme est une série d'instructions finies et non ambiguës utilisées pour résoudre un problème ou accomplir une tâche donnée." },
+      { "nb_reponse": 2, "nb_question": 13, "juste_faux": false, "libelle": "Un algorithme est un type de langage de programmation orienté objet." },
+      { "nb_reponse": 3, "nb_question": 13, "juste_faux": false, "libelle": "Un algorithme est un dispositif matériel utilisé pour stocker des données numériques." },
+      { "nb_reponse": 4, "nb_question": 13, "juste_faux": false, "libelle": "Un algorithme est un système de refroidissement utilisé dans les ordinateurs." },
+      { "nb_reponse": 1, "nb_question": 14, "juste_faux": true, "libelle": "HTML signifie HyperText Markup Language, utilisé pour créer et structurer des pages web." },
+      { "nb_reponse": 2, "nb_question": 14, "juste_faux": false, "libelle": "HTML signifie High-level Machine Language, un langage de programmation bas niveau." },
+      { "nb_reponse": 3, "nb_question": 14, "juste_faux": false, "libelle": "HTML signifie Human-Tech Mastering Language, un système de gestion des technologies de l'information." },
+      { "nb_reponse": 4, "nb_question": 14, "juste_faux": false, "libelle": "HTML signifie Hyperlink Transfer Machine, un protocole de communication réseau." },
+      { "nb_reponse": 1, "nb_question": 15, "juste_faux": true, "libelle": "Une attaque par force brute consiste à essayer toutes les combinaisons possibles de mots de passe jusqu'à ce que le bon soit trouvé." },
+      { "nb_reponse": 2, "nb_question": 15, "juste_faux": false, "libelle": "Une attaque par force brute consiste à pirater un système en exploitant une vulnérabilité du logiciel." },
+      { "nb_reponse": 3, "nb_question": 15, "juste_faux": false, "libelle": "Une attaque par force brute consiste à envoyer des e-mails de phishing pour obtenir des informations confidentielles." },
+      { "nb_reponse": 4, "nb_question": 15, "juste_faux": false, "libelle": "Une attaque par force brute consiste à infecter un système avec un logiciel malveillant." },
+      { "nb_reponse": 1, "nb_question": 16, "juste_faux": true, "libelle": "HTTP (Hypertext Transfer Protocol) est non sécurisé, tandis que HTTPS (Hypertext Transfer Protocol Secure) chiffre les données pour assurer la sécurité des communications." },
+      { "nb_reponse": 2, "nb_question": 16, "juste_faux": false, "libelle": "HTTP et HTTPS sont deux protocoles de communication utilisés exclusivement pour le transfert de fichiers." },
+      { "nb_reponse": 3, "nb_question": 16, "juste_faux": false, "libelle": "HTTP et HTTPS sont des langages de programmation utilisés pour créer des sites web interactifs." },
+      { "nb_reponse": 4, "nb_question": 16, "juste_faux": false, "libelle": "HTTP et HTTPS sont des types de logiciels de sécurité utilisés pour protéger les réseaux informatiques." },
+      { "nb_reponse": 1, "nb_question": 17, "juste_faux": true, "libelle": "Les principaux types de cyberattaques incluent les attaques par phishing, les attaques par déni de service (DDoS), les logiciels malveillants et les attaques de force brute." },
+      { "nb_reponse": 2, "nb_question": 17, "juste_faux": false, "libelle": "Les principaux types de cyberattaques incluent les virus informatiques, les pannes de matériel et les erreurs humaines." },
+      { "nb_reponse": 3, "nb_question": 17, "juste_faux": false, "libelle": "Les principaux types de cyberattaques incluent le spam, les tentatives de piratage physique et les attaques de ransomware." },
+      { "nb_reponse": 4, "nb_question": 17, "juste_faux": false, "libelle": "Les principaux types de cyberattaques incluent l'ingénierie sociale, les attaques de type buffer overflow et les interceptions de données." },
+      { "nb_reponse": 1, "nb_question": 18, "juste_faux": true, "libelle": "Un réseau de neurones artificiels est un modèle informatique inspiré du fonctionnement du cerveau humain, utilisé pour des tâches telles que la reconnaissance d'images et la traduction automatique." },
+      { "nb_reponse": 2, "nb_question": 18, "juste_faux": false, "libelle": "Un réseau de neurones artificiels est un ensemble de câbles et de connexions utilisé pour connecter des périphériques informatiques." },
+      { "nb_reponse": 3, "nb_question": 18, "juste_faux": false, "libelle": "Un réseau de neurones artificiels est une méthode de cryptage utilisée pour sécuriser les communications en ligne." },
+      { "nb_reponse": 4, "nb_question": 18, "juste_faux": false, "libelle": "Un réseau de neurones artificiels est une technologie de stockage de données utilisée dans les centres de données informatiques." },
+      { "nb_reponse": 1, "nb_question": 19, "juste_faux": true, "libelle": "Les langages de programmation interprétés sont traduits ligne par ligne et exécutés simultanément, tandis que les langages de programmation compilés sont traduits en langage machine avant l'exécution." },
+      { "nb_reponse": 2, "nb_question": 19, "juste_faux": false, "libelle": "Les langages de programmation interprétés sont plus rapides que les langages de programmation compilés." },
+      { "nb_reponse": 3, "nb_question": 19, "juste_faux": false, "libelle": "Les langages de programmation interprétés sont principalement utilisés pour les applications de haute performance." },
+      { "nb_reponse": 4, "nb_question": 19, "juste_faux": false, "libelle": "Les langages de programmation interprétés sont plus difficiles à apprendre que les langages de programmation compilés." },
+      { "nb_reponse": 1, "nb_question": 110, "juste_faux": true, "libelle": "Le machine learning est un domaine de l'intelligence artificielle qui permet aux ordinateurs d'apprendre à partir de données et de s'améliorer sans être explicitement programmés." },
+      { "nb_reponse": 2, "nb_question": 110, "juste_faux": false, "libelle": "Le machine learning est un processus utilisé pour écrire des algorithmes de recherche avancés." },
+      { "nb_reponse": 3, "nb_question": 110, "juste_faux": false, "libelle": "Le machine learning est une technique de compression de données utilisée pour réduire la taille des fichiers." },
+      { "nb_reponse": 4, "nb_question": 110, "juste_faux": false, "libelle": "Le machine learning est un ensemble de règles et de procédures utilisées pour optimiser les performances des ordinateurs." }
+  
+       
+    ],
+  "utilisateur":[
+    { "pseudo": "admin","password":"admin" },
+    { "pseudo": "titi" ,"password":"oliveur83"},
+    { "pseudo": "toto" ,"password":"oliveur83"},
+    { "pseudo": "titi" ,"password":"oliveur83"}
+  ],
+  "theme":[
+    { "libelle": "math","id_theme":1 },
+    { "libelle": "chimie" ,"id_theme":2},
+    { "libelle": "info" ,"id_theme":3},
+    { "libelle": "bio" ,"id_theme":4}
+  ],
+  "util_theme":[
+    { "Theme": "chimi","id_theme":1 },
+    { "Theme": "bio" ,"id_theme":2},
+    { "Theme": "info" ,"id_theme":3},
+    { "Theme": "francais" ,"id_theme":4}
+  ],
+  "ue":[
+    { "id_ue":1,"libelle": "base","x":100,"y":50 },
+    { "id_ue":2,"libelle": "python" ,"x":200,"y":100},
+    { "id_ue":3,"libelle": "ia" ,"x":300,"y":50},
+    { "id_ue":4,"libelle": "c" ,"x":100,"y":150},
+    { "id_ue":5,"libelle": "web","x":300,"y":150 },
+    { "id_ue":6,"libelle": "html" ,"x":300,"y":250},
+    { "id_ue":7,"libelle": "css" ,"x":350,"y":250}
+  
+  ],
+  "trait_ue":[
+    { "id_ue_avant": 1,"id_ue_apres":2 },
+    { "id_ue_avant": 2,"id_ue_apres":3 },
+    { "id_ue_avant": 2,"id_ue_apres":4 },
+    { "id_ue_avant": 2,"id_ue_apres":5 },
+    { "id_ue_avant": 5,"id_ue_apres":7 },
+    { "id_ue_avant": 5,"id_ue_apres":6 }
+
+  ],
+  "trait_ue_par_id": [
+    {
+      "id": "1",
+      "data": [
+        { "id_ue_avant": 1, "id_ue_apres": 2 },
+        { "id_ue_avant": 2, "id_ue_apres": 3 },
+        { "id_ue_avant": 2, "id_ue_apres": 4 },
+        { "id_ue_avant": 2, "id_ue_apres": 5 },
+        { "id_ue_avant": 5, "id_ue_apres": 7 }
+      ]
+    },
+    {
+      "id": "2",
+      "data": [
+        { "id_ue_avant": 1, "id_ue_apres": 2 },
+        { "id_ue_avant": 2, "id_ue_apres": 3 },
+        { "id_ue_avant": 2, "id_ue_apres": 4 },
+        { "id_ue_avant": 2, "id_ue_apres": 5 },
+        { "id_ue_avant": 5, "id_ue_apres": 7 },
+        { "id_ue_avant": 5, "id_ue_apres": 6 }
+      ]
+    }
+  ],
+  "select_note":[
+    { "note_qcm": 10, "libelle": "QCM MATH" },
+    { "note_qcm": 10, "libelle": "QCM MATH" },
+    { "note_qcm": 18, "libelle": "Deuxième sujet" },
+    { "note_qcm": 12, "libelle": "Troisième sujet"},
+    { "note_qcm": 12, "libelle": "Quatrième sujet"}
+  
+  ]
+}

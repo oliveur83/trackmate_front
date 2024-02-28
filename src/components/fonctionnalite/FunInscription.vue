@@ -25,10 +25,7 @@ const password = ref('');
 const confirmPassword = ref('');
 
 const register = () => {
-  // Logique d'inscription (à implémenter selon vos besoins)
-  console.log('Tentative d\'inscription avec :', username.value, password.value, confirmPassword.value);
-  emit('buttonClicked', 'inscriptin');
-  
+ emit('buttonClicked', 'inscriptin');
 };
 </script>
 

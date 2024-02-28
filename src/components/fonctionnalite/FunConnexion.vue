@@ -32,11 +32,13 @@ const login = () => {
   // Définir loading à true avant la requête
   loading.value = true;
 
-  // Effectuer la requête axios
-  axios.get('http://127.0.0.1:8000/select_util')
+  ///http://localhost:3000/utilisateur
+  //http://127.0.0.1:8000/select_util
+  axios.get('http://localhost:3000/utilisateur')
     .then(response => {
-      // Traiter la réponse ici
-      let obj = JSON.parse(response.data);
+
+      //let obj = JSON.parse(response.data);
+      let obj =response.data
       // Vérifier si un objet avec un "pseudo" égal à "tom" existe
       let pseudoe = obj.some(function(item) {
         return item.pseudo === username.value;
@@ -106,7 +108,5 @@ button:hover {
   background-color: #133D56;
 }
 
-.loader {
-  /* Styles pour le loader */
-}
+
 </style>

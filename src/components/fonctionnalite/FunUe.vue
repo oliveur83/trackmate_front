@@ -40,23 +40,17 @@ const ue_sel = (ue_selection) => {
   emit('buttonClicked', 'Carte', ue_selection);
 };
 const ajout_theme = () => {
-  console.log(long_liste_ue_user, liste_ue_user.value.length);
+
   if (long_liste_ue_user !== liste_ue_user.value.length) {
     liste_ue_user.value.forEach((objet) => {
       if (!liste_ue_user_save.value.some((savedObj) => savedObj.libelle === objet)) {
         const idTheme = liste_ue_json.value.find((item) => item.libelle === objet)?.id_theme;
 
-        console.log('titi', idTheme);
         if (idTheme) {
-          console.log(idTheme);
-
           axios
             .post('http://127.0.0.1:8000/ajoutueutil', { id_theme: idTheme, id_utilisateur: 1 })
             .then((response) => {
               console.log(response.data);
-            })
-            .catch((error) => {
-              console.error(error);
             });
         } else {
           console.error(`ID de thème non trouvé pour le libellé "${objet.libelle}"`);
@@ -72,12 +66,13 @@ const ue_select = (ue_libelle, ue_id) => {
   }
   console.log(ue_id);
 };
-
+//http://127.0.0.1:8000/select_theme
+//http://localhost:3000/theme
 axios
-  .get('http://127.0.0.1:8000/select_theme')
+  .get('http://localhost:3000/theme')
   .then((response) => {
-    let data = JSON.parse(response.data);
-
+    //let data = JSON.parse(response.data);
+    let data = response.data;
     if (Array.isArray(data)) {
       data.forEach((obj) => {
         liste_ue_json.value.push({ libelle: obj.libelle, id_theme: obj.id_theme });
@@ -91,7 +86,7 @@ axios
     console.error('Erreur lors de la récupération des données :', error);
   });
 axios
-  .get('http://127.0.0.1:8000/ueutil/1')
+  .get('http://localhost:3000/util_theme')
   .then((response) => {
     let data = response.data;
     if (Array.isArray(data)) {

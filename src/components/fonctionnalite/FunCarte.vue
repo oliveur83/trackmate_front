@@ -27,35 +27,64 @@ import axios from 'axios';
 //const data = dataStore.data;
 
 const liste_question = ref([]);
+const liste_id_ue_dep_arv =ref([])
+const links = ref ([
+]); 
 onMounted(async () => {
-
-axios.get('http://127.0.0.1:8000/select_ue')
+//http://127.0.0.1:8000/select_ue
+//http://localhost:3000/ue
+axios.get('http://localhost:3000/ue')
   .then(response => {
-    let data = JSON.parse(response.data);
-
+    // let data = JSON.parse(response.data)
+    let data = response.data;
+   
       if (Array.isArray(data))  {
         liste_question.value = data.map(obj => {
           return {
             libelle: obj.libelle,
             x: obj.x,
-            y: obj.y 
-            // Ajoutez d'autres champs au besoin
+            y: obj.y,
+            id_ue:obj.id_ue
           };
         });
 
       }
- })
+ }); 
+ axios.get('http://localhost:3000/trait_ue')
+  .then(response => {
+    // let data = JSON.parse(response.data)
+    let data = response.data;
+   
+      if (Array.isArray(data))  {
+        liste_id_ue_dep_arv.value = data.map(obj => {
+          return {
+            id_dep: obj.id_ue_avant,
+            id_arv: obj.id_ue_apres,
+          }; 
+        });
+  
+        toto() 
+      }
+ }); 
+
 });
-
-const links = [
-  { id: 1, start: { x: 100, y: 50 }, end: { x: 200, y: 100 } },
-  { id: 2, start: { x: 200, y: 100 }, end: { x: 300, y: 50 } },
-  { id: 3, start: { x: 200, y: 100 }, end: { x: 100, y: 150 } },
-  { id: 4, start: { x: 200, y: 100 }, end: { x: 300, y: 150 } },
-  { id: 5, start: { x: 300, y: 150 }, end: { x: 350, y: 250 } },
-  { id: 5, start: { x: 300, y: 150 }, end: { x: 300, y: 250 } }
-];
-
+const toto = () => {
+for (var i = 0; i < liste_id_ue_dep_arv.value.length; i++) {
+ 
+  const id_ue_dep=liste_id_ue_dep_arv.value[i].id_dep
+  const id_ue_apres=liste_id_ue_dep_arv.value[i].id_arv
+  let elementdep = liste_question.value.find(obj => obj.id_ue === id_ue_dep);
+  let elementap = liste_question.value.find(obj => obj.id_ue === id_ue_apres);
+  console.log("el",elementap,elementdep)
+  links.value.push({
+      id: i,
+      start: { x: elementdep.x, y: elementdep.y },
+      end: { x: elementap.x, y: elementap.y }
+    });
+   
+}
+console.log("trait",links)
+}
 
 
 const emit = defineEmits(['buttonClicked']);

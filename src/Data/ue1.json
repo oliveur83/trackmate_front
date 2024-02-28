@@ -1,0 +1,9 @@
+
+
+[
+    { "libelle": "admin","x":50,"y":100 },
+    { "libelle": "titi" ,"x":100,"y":100},
+    { "libelle": "toto" ,"x":150,"y":150},
+    { "libelle": "titi" ,"x":4,"y":4}
+  ]
+  

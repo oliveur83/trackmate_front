@@ -5,7 +5,7 @@ import funins from '../fonctionnalite/FunInscription.vue';
 import funue from '../fonctionnalite/FunUe.vue';
 import funqcm from '../fonctionnalite/FunQcm.vue';
 import funstudy from '../fonctionnalite/FunStudy.vue';
-import { ref,defineProps } from 'vue';
+import { ref,defineProps,watch } from 'vue';
 import { useDataStore } from '../../store/database.js';
 import funProfil from '../fonctionnalite/funProfil.vue';
 
@@ -14,9 +14,10 @@ dataStore.setData([1, 2, 3, 4, 5]);
 let vrai_ue = ref('');
 let selectedComponent = ref('');
 const props = defineProps({
-  valeurToto: Boolean
+  valeurToto: Boolean,
+  gotomenu: String
 });
-console.log("titi",props.valeurToto)
+
 const handleButtonClicked = (pseudoe) => {
   if (pseudoe) {
     selectedComponent.value = 'ue';
@@ -25,17 +26,12 @@ const handleButtonClicked = (pseudoe) => {
   }
 };
 const ecouteins = (buttonName) => {
-  // Réagir en fonction du bouton cliqué
+
   console.log('Bouton', buttonName, 'cliqué');
-
-  // Mettre à jour le composant sélectionné en fonction du bouton cliqué
-  selectedComponent.value = '';
+ selectedComponent.value = '';
 };
-const ecoute_ue = (buttonName, ue) => {
-  // Réagir en fonction du bouton cliqué
-
+const ecoute_ue = ( ue) => {
   vrai_ue = ue;
-  // Mettre à jour le composant sélectionné en fonction du bouton cliqué
   selectedComponent.value = 'Carte';
 };
 const ecoute_qcm_study = (ecout) => {
@@ -48,13 +44,18 @@ const gotocompo = (gotoname) => {
     selectedComponent.value = 'inscription';
   }
 };
+watch(() => props.gotomenu, () => {
+  
+  selectedComponent=props.gotomenu
 
+});
 </script>
 <template>
   <div>
+    
     <div v-if="valeurToto == true">
       <funProfil/>
-    </div>
+    </div> 
     <div v-else-if="selectedComponent == 'ue'">
       <funue @buttonClicked="ecoute_ue" />
     </div>

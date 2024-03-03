@@ -42,7 +42,14 @@ const ecoute_qcm_study = (ecout) => {
 };
 const gotocompo = (gotoname) => {
   if (gotoname == 'Connexion') {
-    selectedComponent.value = 'Connexion';
+    if (dataStore.connexion){
+      selectedComponent.value='ue'
+    }
+    else{
+      selectedComponent.value = 'Connexion';
+    }
+  
+
   } else {
     selectedComponent.value = 'inscription';
   }

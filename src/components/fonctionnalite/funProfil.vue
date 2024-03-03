@@ -16,6 +16,9 @@
         <p><strong>Nombre de quizz terminés:</strong> {{ stats.completedQuizzes }}</p>
       </div>
     </div>
+    <div class="section">
+      <h2>  les qcm crée </h2>
+    </div>
   </div>
   <div v-else>
     <FunConnexion/>
@@ -24,7 +27,6 @@
 
 
 <script setup>
-import axios from 'axios';
 import FunConnexion from './FunConnexion.vue';
 import { useDataStore } from '../../store/database.js';
 const dataStore = useDataStore();
@@ -41,15 +43,6 @@ const stats = {
   totalPoints: 1000,
   completedQuizzes: 5
 };
-axios.get('http://localhost:3000/question')
-  .then(response => {
-    this.users = response.data;
- 
-  })
-  .catch(error => {
-    console.error('Erreur lors de la récupération des utilisateurs:', error);
-  });
-
 </script>
 
 <style scoped>

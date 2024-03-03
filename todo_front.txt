@@ -1,3 +1,7 @@
 page theme 
 -faire un bouton remover
 -faire les recomandaation s
+
+fonction a voir pour apprendre 
+faire les /1 /2
+faire les puts 

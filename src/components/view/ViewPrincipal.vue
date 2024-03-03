@@ -14,10 +14,7 @@
 <script setup>
 import carrebleu from './ViewBleu.vue'; // Importez le composant enfant correctement
 import { ref } from 'vue';
-import { useDataStore } from '../../store/database.js';
-const dataStore = useDataStore();
 
-const data = dataStore.connexion;
 
 let toto = ref(false); 
 let backtomenu = ref(''); 

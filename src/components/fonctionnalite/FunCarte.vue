@@ -21,11 +21,6 @@
 import { defineProps, ref, defineEmits,onMounted } from 'vue';
  
 import axios from 'axios';
-//import { useDataStore } from '../../store/database.js';
-//const dataStore = useDataStore();
-
-//const data = dataStore.data;
-
 const liste_question = ref([]);
 const liste_id_ue_dep_arv =ref([])
 const links = ref ([

@@ -7,13 +7,13 @@
       <input type="text" placeholder="username" id="username" v-model="username" required>
       <input type="password" placeholder="password" id="password" v-model="password" required>
   
-      <button type="submit">Se connecter</button>
-      <h1>mot de passe oublier </h1>
+      <button type="submit">Se connecfter</button>
+      <h1 @click="mdp_o">mot de passe oublier </h1>
       <div v-if="mdp_oublie==true">
         <h1> entrez un mot nouveau mot de passe </h1>
-        <input type="text" placeholder="username" id="username" v-model="username" required>
-        <h1> entrez un mot nouveau mot de passe </h1>
-        <input type="password" placeholder="password" id="password" v-model="password" required>
+        <input type="text" placeholder="new_mdp" id="new_mdp" v-model="username" required>
+        <h1> confirmation du mots de passe </h1>
+        <input type="password" placeholder="conf_mdp" id="conf_mdp" v-model="password" required>
   
     </div>
     </form>
@@ -30,7 +30,9 @@ const username = ref('');
 const password = ref('');
 const loading = ref(false); // État pour le chargement
 const mdp_oublie=ref(false)
-
+const mdp_o = () => {
+  mdp_oublie.value=true;
+};
 const login = () => {
   // Définir loading à true avant la requête
   loading.value = true;

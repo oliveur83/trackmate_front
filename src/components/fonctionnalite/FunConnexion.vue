@@ -1,12 +1,7 @@
 <template>
   <div class="didi">
-    <!-- Afficher l'écran gris de fond si loading est vrai -->
     <div v-if="loading" class="overlay"></div>
-
-    <!-- Afficher le loader si loading est vrai -->
     <div v-if="loading" class="loader"></div>
-    
-    <!-- Afficher le formulaire si loading est faux -->
     <form v-if="!loading" @submit.prevent="login">
       <h1>{{ title }}</h1>
       <input type="text" placeholder="username" id="username" v-model="username" required>
@@ -14,6 +9,13 @@
   
       <button type="submit">Se connecter</button>
       <h1>mot de passe oublier </h1>
+      <div v-if="mdp_oublie==true">
+        <h1> entrez un mot nouveau mot de passe </h1>
+        <input type="text" placeholder="username" id="username" v-model="username" required>
+        <h1> entrez un mot nouveau mot de passe </h1>
+        <input type="password" placeholder="password" id="password" v-model="password" required>
+  
+    </div>
     </form>
   </div>
 </template>
@@ -27,11 +29,11 @@ const title = 'Connexion';
 const username = ref('');
 const password = ref('');
 const loading = ref(false); // État pour le chargement
+const mdp_oublie=ref(false)
 
 const login = () => {
   // Définir loading à true avant la requête
   loading.value = true;
-
   ///http://localhost:3000/utilisateur
   //http://127.0.0.1:8000/select_util
   axios.get('http://localhost:3000/utilisateur')
@@ -45,12 +47,8 @@ const login = () => {
       });
       emit('buttonClicked', pseudoe);
     })
-    .catch(error => {
-      // Gérer les erreurs ici
-      console.error('Erreur lors de la récupération des données :', error);
-    })
     .finally(() => {
-      // Définir loading à false une fois la requête terminée
+      
       loading.value = false;
     });
 };
@@ -66,7 +64,6 @@ const login = () => {
   color:white;
   position: relative; /* Ajout pour positionner l'overlay par rapport à ce conteneur */
 }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -75,7 +72,6 @@ const login = () => {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -84,18 +80,15 @@ form {
   margin: 0 auto;
   align-items: center;
 }
-
 label {
   margin-bottom: 8px;
 }
-
 input {
   padding: 8px;
   margin-bottom: 16px;
   margin-left: 30px;
   margin-right: 30px;
 }
-
 button {
   padding: 10px;
   background-color: #133D56;
@@ -103,10 +96,7 @@ button {
   border: none;
   cursor: pointer;
 }
-
 button:hover {
   background-color: #133D56;
 }
-
-
 </style>

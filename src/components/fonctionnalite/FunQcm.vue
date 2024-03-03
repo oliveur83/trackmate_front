@@ -27,7 +27,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import funqest_res from '../fonctionnalite/Funquest_res.vue';
-
 import axios from 'axios';
 
 let question = ref(false);
@@ -49,10 +48,6 @@ onMounted(async () => {
      
       }
     })
-    .catch((error) => {
-      // Gérez les erreurs ici
-      console.error('Erreur lors de la récupération des données :', error);
-    });
 });
 const passe_question = (num_qcmm) => {
   question.value = true;
@@ -75,7 +70,6 @@ const passe_question = (num_qcmm) => {
   border-spacing: 10px;
   background-color: #133d56;
 }
-
 .qcm-table th,
 .qcm-table td {
   margin: 100px;
@@ -83,7 +77,6 @@ const passe_question = (num_qcmm) => {
   padding: 20px;
   text-align: left;
 }
-
 .couleur {
   background-color: white;
   border-radius: 10px;

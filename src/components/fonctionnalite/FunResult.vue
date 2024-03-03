@@ -22,15 +22,15 @@ const login = (ue_selection) => {
   emit('buttonClicked', ue_selection);
 };
 const getBackgroundColor = (score) => {
- const hue = (score / 10) * 120; // Convertit le score en une valeur de teinte entre 0 et 120 (rouge à vert)
-  return `hsl(${hue}, 100%, 50%)`; // Utilise HSL pour définir la couleur
+ const hue = (score / 10) * 120; 
+  return `hsl(${hue}, 100%, 50%)` ;
 };
 </script>
 <style>
 .star {
-  font-size: 2rem; /* Ajustez la taille de la police selon vos besoins */
+  font-size: 2rem; 
   margin-right: 5px;
-  display: flex; /* Ajustez la marge entre les étoiles selon vos besoins */
+  display: flex; 
 }
 .semi-circle {
   width: 20rem;
@@ -51,7 +51,7 @@ const getBackgroundColor = (score) => {
   bottom: 0;
 }
 .content {
-  margin-bottom: 1rem; /* Ajustez la marge selon vos besoins */
+  margin-bottom: 1rem; 
 }
 .star-container {
   display: flex;

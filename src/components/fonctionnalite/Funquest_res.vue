@@ -1,5 +1,4 @@
 <template>
-
   <div class="res" v-if="affichage_result == false">
     score :{{ score }}
     <div class="qcm">
@@ -103,7 +102,6 @@ const reponse_passagequestion = (index, juste_faux_res) => {
   if (selectedResponseIndex.value && click.value == 1) {
     score = score + 1;
   }
-
   if (numero_question.value == 20) {
     affichage_result.value = true;
   }
@@ -111,15 +109,13 @@ const reponse_passagequestion = (index, juste_faux_res) => {
 </script>
 
 <style scoped>
-.qcm {
-  
+.qcm { 
   width: 100%;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
 }
-
 .qcm-table {
   border-spacing: 10px;
   background-color: #133d56;
@@ -135,18 +131,14 @@ const reponse_passagequestion = (index, juste_faux_res) => {
 }
 .qcm-table tr {
   margin: 0px;
-
 }
-
-
 .couleur {
   background-color: white;
   border-radius: 10px;
 }
-
 .selected {
-  background-color: #4caf50; /* Couleur de fond pour la réponse sélectionnée */
-  color: white; /* Couleur du texte pour la réponse sélectionnée */
+  background-color: #4caf50; 
+  color: white; 
 }
 .res {
   width: 100%;
@@ -157,7 +149,7 @@ const reponse_passagequestion = (index, juste_faux_res) => {
   flex-direction: column;
 }
 .nonselect {
-  background-color: #d70036; /* Couleur de fond pour la réponse sélectionnée */
-  color: white; /* Couleur du texte pour la réponse sélectionnée */
+  background-color: #d70036;
+  color: white; 
 }
 </style>

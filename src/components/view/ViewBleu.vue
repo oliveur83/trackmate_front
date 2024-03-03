@@ -10,7 +10,9 @@ import { useDataStore } from '../../store/database.js';
 import funProfil from '../fonctionnalite/funProfil.vue';
 
 const dataStore = useDataStore();
+
 dataStore.setData([1, 2, 3, 4, 5]);
+
 let vrai_ue = ref('');
 let selectedComponent = ref('');
 const props = defineProps({
@@ -21,6 +23,7 @@ const props = defineProps({
 const handleButtonClicked = (pseudoe) => {
   if (pseudoe) {
     selectedComponent.value = 'ue';
+    dataStore.connexion=true
   } else {
     alert(' mauvais mot de passe ou pseudo');
   }
@@ -92,13 +95,11 @@ div {
   justify-content: center;
   width: 100%;
 }
-
 .button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .action-btn {
   background-color: #4caf50;
   color: white;
@@ -110,7 +111,6 @@ div {
   font-size: 16px;
   transition: background-color 0.3s;
 }
-
 .action-btn:hover {
   background-color: #45a049;
 }

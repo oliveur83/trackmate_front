@@ -1,7 +1,10 @@
 <!-- MonPremierComposant.vue -->
 <template>
     <div>
-      <h1>{{ message }}</h1>
+      <h1>cours </h1>
+      {{ message }}
+      <h1>converstaiton</h1>
+      {{ message }}
     </div>
   </template>
   

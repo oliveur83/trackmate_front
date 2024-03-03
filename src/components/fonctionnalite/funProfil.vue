@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-data">
+  <div v-if="data==true" class="profile-data">
     <div class="section">
       <h2>Données Personnelles</h2>
       <div class="personal-info">
@@ -17,10 +17,19 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    <FunConnexion/>
+  </div>
 </template>
+
 
 <script setup>
 import axios from 'axios';
+import FunConnexion from './FunConnexion.vue';
+import { useDataStore } from '../../store/database.js';
+const dataStore = useDataStore();
+
+const data = dataStore.connexion;
 
 const userData = {
   nom: "John Doe",

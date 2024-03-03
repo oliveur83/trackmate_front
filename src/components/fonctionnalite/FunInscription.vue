@@ -38,23 +38,19 @@ div {
   display: flex;
   align-items: center;
 }
-
 form {
   display: flex;
   flex-direction: column;
   max-width: 300px;
   margin: 0 auto;
 }
-
 label {
   margin-bottom: 8px;
 }
-
 input {
   padding: 8px;
   margin-bottom: 16px;
 }
-
 button {
   padding: 10px;
   background-color: #4CAF50;
@@ -62,7 +58,6 @@ button {
   border: none;
   cursor: pointer;
 }
-
 button:hover {
   background-color: #45a049;
 }

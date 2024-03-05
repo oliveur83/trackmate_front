@@ -4,7 +4,10 @@ import { defineStore } from 'pinia';
 export const useDataStore = defineStore('dataStore', {
   state: () => ({
     data: [],
-    connexion :Boolean
+    connexion :false,
+    ue_save: String,
+    theme_save:String,
+    qcm_save:String
   }),
   actions: {
     setData(newData) {
@@ -12,6 +15,15 @@ export const useDataStore = defineStore('dataStore', {
     },
     setco(newData) {
       this.connexion = newData;
+    },
+    setue(newData) {
+      this.ue_save = newData;
+    },
+    settheme(newData) {
+      this.theme_save = newData;
+    },
+    setqcm(newData) {
+      this.qcm_save = newData;
     },
   },
 });

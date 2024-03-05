@@ -1,8 +1,0 @@
-
-[
-    { "libelle": "admin","id_theme":1 },
-    { "libelle": "titi" ,"id_theme":2},
-    { "libelle": "toto" ,"id_theme":3},
-    { "libelle": "titi" ,"id_theme":4}
-  ]
-  

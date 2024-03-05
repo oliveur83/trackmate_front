@@ -5,3 +5,60 @@ page theme
 fonction a voir pour apprendre 
 faire les /1 /2
 faire les puts 
+
+import axios from 'axios';
+
+export default {
+  methods: {
+    ajouterQuestion() {
+      const nouvelleQuestion = {
+        text: 'Nouvelle question',
+        answer: 'Nouvelle réponse'
+      };
+
+      axios.post('http://localhost:3000/questions', nouvelleQuestion)
+        .then(response => {
+          console.log('Question ajoutée avec succès :', response.data);
+          // Réactualiser les données si nécessaire
+        })
+        .catch(error => {
+          console.error('Erreur lors de l\'ajout de la question :', error);
+        });
+    }
+  }
+}
+//---------------------------------------------------
+{
+  "qcmA": [
+    { "id": 1, "text": "Question 1 pour QCM A", "answer": "Réponse 1" },
+    { "id": 2, "text": "Question 2 pour QCM A", "answer": "Réponse 2" }
+  ],
+  "reponses": [
+    { "id": 1, "questionId": 1, "text": "Réponse à la question 1" },
+    { "id": 2, "questionId": 1, "text": "Autre réponse à la question 1" },
+    { "id": 3, "questionId": 2, "text": "Réponse à la question 2" }
+  ]
+}
+axios.get(`http://localhost:3000/reponses?questionId=${questionId}`)
+  .then(response => {
+    const reponsesPremiereQuestion = response.data;
+    // Maintenant, vous avez toutes les réponses de la première question
+  })
+  .catch(error => {
+    console.error('Erreur lors de la récupération des réponses pour la première question :', error);
+  });
+
+"reponses": [
+ "1": [
+  
+    { "questionId": 1, "text": "Réponse à la question 1" },
+    { "questionId": 1, "text": "Autre réponse à la question 1" },
+    { "questionId": 2, "text": "Réponse à la question 2" }
+  ],
+  "2": [
+  
+    { "questionId": 1, "text": "Réponse à la question 1" },
+    { "questionId": 1, "text": "Autre réponse à la question 1" },
+    { "questionId": 2, "text": "Réponse à la question 2" }
+  ]
+  ]

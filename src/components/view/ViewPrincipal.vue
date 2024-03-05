@@ -1,13 +1,12 @@
 <template>
   <div class="main-container">
     <div class="barre_menu">
-      <img src="../../assets/logo.png" alt="Description de l'image" @click="afficherProfill">
+      <img src="../../assets/logo.png" alt="Description de l'image" @click="retourmenu" />
       <p>Track mates</p>
-      <img src="../../assets/profil.png" alt="Description de l'image" @click="afficherProfil">
+      <img src="../../assets/profil.png" alt="Description de l'image" @click="afficherProfil" />
     </div>
-   
-    <carrebleu :valeurToto="toto" :gotomenu="backtomenu" />
 
+    <carrebleu :valeurToto="toto" :gotomenu="backtomenu" />
   </div>
 </template>
 
@@ -15,18 +14,19 @@
 import carrebleu from './ViewBleu.vue'; // Importez le composant enfant correctement
 import { ref } from 'vue';
 
-
-let toto = ref(false); 
-let backtomenu = ref(''); 
+let toto = ref(false);
+let backtomenu = ref('');
 const afficherProfil = () => {
   toto.value = !toto.value;
 };
-const afficherProfill = () => {
-  if (backtomenu.value==''){backtomenu.value="toto";console.log("r",backtomenu.value)}
-  else{backtomenu.value='';console.log("t",backtomenu.value)}
-
+const retourmenu = () => {
+  if (backtomenu.value == '') {
+    backtomenu.value = 'toto';
+  } else {
+    backtomenu.value = '';
+    
+  }
 };
-
 </script>
 
 <style scoped>

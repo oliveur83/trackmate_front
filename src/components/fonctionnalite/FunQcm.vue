@@ -7,7 +7,7 @@
             v-for="(item, index) in liste_QCM"
             :key="index"
             class="qcm-item"
-            @click="passe_question(item.num_qcm)"
+            @click="passe_question(index)"
           >
             <td class="couleur">{{ item.num_qcm }}</td>
             <td class="couleur">{{ item }}</td>
@@ -28,6 +28,9 @@
 import { ref, onMounted } from 'vue';
 import funqest_res from '../fonctionnalite/Funquest_res.vue';
 import axios from 'axios';
+import { useDataStore } from '../../store/database.js';
+const dataStore = useDataStore();
+const themeid = dataStore.theme_save;
 
 let question = ref(false);
 const liste_QCM = ref([]);
@@ -36,7 +39,7 @@ onMounted(async () => {
   //http://127.0.0.1:8000/select_QCM
   //http://localhost:3000/qcms
   axios
-    .get('http://localhost:3000/qcms')
+    .get(`http://localhost:3000/qcms-${themeid}`)
     .then((response) => {
       //let data = JSON.parse(response.data);
       let data = response.data;
@@ -52,6 +55,9 @@ onMounted(async () => {
 const passe_question = (num_qcmm) => {
   question.value = true;
   num_qcm.value = num_qcmm;
+  console.log("value",num_qcm.value)
+  dataStore.setqcm(num_qcm.value)
+
 };
 </script>
 

@@ -28,7 +28,9 @@
 <script setup>
 import { defineEmits, ref } from 'vue';
 import axios from 'axios';
+import { useDataStore } from '../../store/database.js';
 
+const dataStore = useDataStore();
 const liste_ue_json = ref([]);
 const liste_ue_user = ref([]);
 const liste_ue_user_save = ref([]);
@@ -36,6 +38,8 @@ const emit = defineEmits(['buttonClicked']);
 let long_liste_ue_user = 0;
 
 const ue_sel = (ue_selection) => {
+  const theme = liste_ue_json.value.find(theme => theme.libelle === ue_selection);
+  dataStore.setue(theme.id_theme)
   ajout_theme();
   emit('buttonClicked', 'Carte', ue_selection);
 };
@@ -81,18 +85,13 @@ axios
       console.error("La réponse n'est pas un tableau valide.");
     }
   })
-  .catch((error) => {
-    // Gérez les erreurs ici
-    console.error('Erreur lors de la récupération des données :', error);
-  });
+
 axios
   .get('http://localhost:3000/util_theme')
   .then((response) => {
     let data = response.data;
     if (Array.isArray(data)) {
-      console.log(data);
       data.forEach((obj) => {
-        console.log(obj);
         liste_ue_user.value.push(obj.Theme);
         liste_ue_user_save.value.push(obj.Theme);
       });

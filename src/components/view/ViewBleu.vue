@@ -10,15 +10,13 @@ import { useDataStore } from '../../store/database.js';
 import funProfil from '../fonctionnalite/funProfil.vue';
 
 const dataStore = useDataStore();
-
-dataStore.setData([1, 2, 3, 4, 5]);
-
 let vrai_ue = ref('');
 let selectedComponent = ref('');
 const props = defineProps({
   valeurToto: Boolean,
   gotomenu: String
 });
+
 
 const handleButtonClicked = (pseudoe) => {
   if (pseudoe) {
@@ -42,22 +40,21 @@ const ecoute_qcm_study = (ecout) => {
 };
 const gotocompo = (gotoname) => {
   if (gotoname == 'Connexion') {
+    console.log("titi",selectedComponent)
     if (dataStore.connexion){
       selectedComponent.value='ue'
     }
     else{
+      console.log("titi 2",selectedComponent)
       selectedComponent.value = 'Connexion';
+      console.log("titi 3",selectedComponent)
     }
-  
-
   } else {
     selectedComponent.value = 'inscription';
   }
 };
 watch(() => props.gotomenu, () => {
-  
-  selectedComponent=props.gotomenu
-
+  selectedComponent.value=props.gotomenu
 });
 </script>
 <template>

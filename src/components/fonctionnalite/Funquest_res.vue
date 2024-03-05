@@ -33,8 +33,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import result from './FunResult.vue';
-
 import axios from 'axios';
+import { useDataStore } from '../../store/database.js';
+const dataStore = useDataStore();
 
 const liste_question = ref([]);
 const numero_question = ref(11);
@@ -46,12 +47,12 @@ const indexr = ref(null);
 let click = ref(0);
 let affichage_result = ref(false);
 let score = 0;
-
+const num_qcm=dataStore.qcm_save
 onMounted(async () => {
-
+  console.log("numero qcm ",num_qcm)
   //  http://127.0.0.1:8000/select_question
   //http://localhost:3000/questions
-  axios.get('http://localhost:3000/questions  ').then((response) => {
+  axios.get(`http://localhost:3000/questions-${num_qcm}`).then((response) => {
     // let data = JSON.parse(response.data);
 
     let data = response.data;
@@ -65,7 +66,7 @@ onMounted(async () => {
       mise_a_jour_question()
     }
   });
-  axios.get('http://localhost:3000/reponses').then((response) => {
+  axios.get(`http://localhost:3000/reponses-${num_qcm}`).then((response) => {
     //let data = JSON.parse(response.data);
     let data = response.data;
 

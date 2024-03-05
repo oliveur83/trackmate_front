@@ -4,7 +4,7 @@
     <div class="carte_mental">
       <svg width="500" height="400">
         <line v-for="link in links" :key="link.id" :x1="link.start.x" :y1="link.start.y" :x2="link.end.x" :y2="link.end.y" stroke="black" />
-        <g v-for="bubble in liste_question" :key="bubble.id" @click="lancement_menu('info')">
+        <g v-for="bubble in liste_question" :key="bubble.id" @click="lancement_menu(bubble.id_ue)">
           <circle :cx="bubble.x" :cy="bubble.y" r="20" fill="blue" />
           <text :x="bubble.x" :y="bubble.y" text-anchor="middle" dy="0.3em" fill="white">{{ bubble.libelle }}</text>
         </g>
@@ -19,20 +19,23 @@
 
 <script setup>
 import { defineProps, ref, defineEmits,onMounted } from 'vue';
- 
 import axios from 'axios';
+import { useDataStore } from '../../store/database.js';
+
+const dataStore = useDataStore();
 const liste_question = ref([]);
 const liste_id_ue_dep_arv =ref([])
 const links = ref ([
 ]); 
+
 onMounted(async () => {
 //http://127.0.0.1:8000/select_ue
 //http://localhost:3000/ue
-axios.get('http://localhost:3000/ue')
+const themeid = dataStore.ue_save;
+axios.get(`http://localhost:3000/ue-${themeid}`)
   .then(response => {
     // let data = JSON.parse(response.data)
     let data = response.data;
-   
       if (Array.isArray(data))  {
         liste_question.value = data.map(obj => {
           return {
@@ -70,15 +73,12 @@ for (var i = 0; i < liste_id_ue_dep_arv.value.length; i++) {
   const id_ue_apres=liste_id_ue_dep_arv.value[i].id_arv
   let elementdep = liste_question.value.find(obj => obj.id_ue === id_ue_dep);
   let elementap = liste_question.value.find(obj => obj.id_ue === id_ue_apres);
-  console.log("el",elementap,elementdep)
   links.value.push({
       id: i,
       start: { x: elementdep.x, y: elementdep.y },
       end: { x: elementap.x, y: elementap.y }
     });
-   
 }
-console.log("trait",links)
 }
 
 
@@ -88,11 +88,10 @@ const props = defineProps(['ue_choisie']);
 
 const lancement_menu = (bulle) => {
   affichage_men_bar.value = !affichage_men_bar.value;
-console.log(bulle)
+  dataStore.settheme(bulle)
 };
 
 const login = (ue_selection) => {
-
   emit('buttonClicked', ue_selection);
 };
 </script>

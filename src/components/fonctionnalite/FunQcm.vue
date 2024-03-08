@@ -10,7 +10,7 @@
             @click="passe_question(index)"
           >
             <td class="couleur">{{ item.num_qcm }}</td>
-            <td class="couleur">{{ item }}</td>
+            <td class="couleur">{{ item.libelle }}</td>
             <td class="couleur">{{ item.nb_jaime }}⭐</td>
             <td class="couleur">{{ item.score }}</td>
           </tr>
@@ -36,22 +36,18 @@ let question = ref(false);
 const liste_QCM = ref([]);
 let num_qcm = ref(0);
 onMounted(async () => {
-  //http://127.0.0.1:8000/select_QCM
-  //http://localhost:3000/qcms
   axios
     .get(`http://localhost:3000/qcms-${themeid}`)
     .then((response) => {
-      //let data = JSON.parse(response.data);
       let data = response.data;
     
       if (Array.isArray(data)) {
-        data.forEach((obj) => {
-          liste_QCM.value.push(obj.libelle);
-        });
-     
+        // Si les données sont sous forme de tableau
+        liste_QCM.value = data;
       }
     })
 });
+
 const passe_question = (num_qcmm) => {
   question.value = true;
   num_qcm.value = num_qcmm;

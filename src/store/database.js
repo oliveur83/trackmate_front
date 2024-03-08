@@ -7,7 +7,8 @@ export const useDataStore = defineStore('dataStore', {
     connexion :false,
     ue_save: String,
     theme_save:String,
-    qcm_save:String
+    qcm_save:String,
+    selection_compo:''
   }),
   actions: {
     setData(newData) {
@@ -24,6 +25,9 @@ export const useDataStore = defineStore('dataStore', {
     },
     setqcm(newData) {
       this.qcm_save = newData;
+    },
+    setselection_compo(newData) {
+      this.selection_compo = newData;
     },
   },
 });

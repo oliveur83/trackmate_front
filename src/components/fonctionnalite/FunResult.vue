@@ -8,18 +8,24 @@
   <h2>Bravo</h2><br />
   <button>Relire les questions</button>
   <div class="menu_bar">
-    <button class="action-btn" @click="login('QCM')">Quizz</button>
+    <button class="action-btn" @click="login('Carte')">Quizz</button>
     <button class="action-btn" @click="login('study')">Study</button>
   </div>
 </template>
 <script setup>
-import { defineEmits, defineProps } from 'vue';
+import { defineProps } from 'vue';
+import { useDataStore } from '../../store/database.js';
+const dataStore = useDataStore();
+
 const props = defineProps({
   score: Boolean
 });
-const emit = defineEmits(['buttonClicked']);
+
+
 const login = (ue_selection) => {
-  emit('buttonClicked', ue_selection);
+
+  dataStore.setselection_compo(ue_selection)
+  console.log(dataStore.selection_compo)
 };
 const getBackgroundColor = (score) => {
  const hue = (score / 10) * 120; 

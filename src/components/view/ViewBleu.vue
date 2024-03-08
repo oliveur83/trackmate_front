@@ -11,7 +11,7 @@ import funProfil from '../fonctionnalite/funProfil.vue';
 
 const dataStore = useDataStore();
 let vrai_ue = ref('');
-let selectedComponent = ref('');
+let selectedComponent = ref(dataStore.selection_compo);
 const props = defineProps({
   valeurToto: Boolean,
   gotomenu: String
@@ -55,6 +55,10 @@ const gotocompo = (gotoname) => {
 };
 watch(() => props.gotomenu, () => {
   selectedComponent.value=props.gotomenu
+});
+watch(() => dataStore.selection_compo, (newValue) => {
+  selectedComponent.value = newValue; // Mettez à jour selectedComponent avec la nouvelle valeur
+  
 });
 </script>
 <template>

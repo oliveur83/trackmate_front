@@ -4,8 +4,6 @@
       <h2>Données Personnelles</h2>
       <div class="personal-info">
         <p><strong>Nom:</strong> {{ userData.nom }}</p>
-        <p><strong>Âge:</strong> {{ userData.age }}</p>
-        <p><strong>Email:</strong> {{ userData.email }}</p>
       </div>
     </div>
     
@@ -62,9 +60,7 @@ onMounted(async () => {
     })
 });
 const userData = {
-  nom: "John Doe",
-  age: 30,
-  email: "john.doe@example.com"
+  nom: dataStore.pseudo,
 };
 </script>
 

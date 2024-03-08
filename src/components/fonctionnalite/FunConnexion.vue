@@ -23,7 +23,8 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 import axios from 'axios';
-
+import { useDataStore } from '../../store/database.js';
+const dataStore = useDataStore();
 const emit = defineEmits(['buttonClicked']);
 const title = 'Connexion';
 const username = ref('');
@@ -47,6 +48,7 @@ const login = () => {
       let pseudoe = obj.some(function(item) {
         return item.pseudo === username.value;
       });
+      dataStore.setpseudo(username.value)
       emit('buttonClicked', pseudoe);
     })
     .finally(() => {

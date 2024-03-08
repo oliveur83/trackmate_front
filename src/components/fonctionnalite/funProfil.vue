@@ -1,41 +1,42 @@
 <template>
-  <div v-if="data==true" class="profile-data">
+  <div v-if="data == true" class="profile-data">
     <div class="section">
       <h2>Données Personnelles</h2>
       <div class="personal-info">
         <p><strong>Nom:</strong> {{ userData.nom }}</p>
       </div>
     </div>
-    
-    <div class="section">
-  <h2>Statistiques</h2>
-  <div class="qcm-container">
-    <table class="qcm-table">
-      <thead>
-        <tr>
-          <th>Note</th>
-          <th>Libellé</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in liste_QCM" :key="index" class="qcm-item" @click="passe_question(index)">
-          <td class="note">{{ item.note_qcm }}</td>
-          <td class="libelle">{{ item.libelle }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
     <div class="section">
-      <h2>  les qcm crée </h2>
+      <h2>Statistiques</h2>
+      <div class="qcm-container">
+        <table class="qcm-table">
+          <thead>
+            <tr>
+              <th>QCM</th>
+              <th>Moyenne</th>
+              <th>Essais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(qcm, index) in qcmStats" :key="index">
+              <td>{{ qcm.libelle }}</td>
+              <td>{{ qcm.moyenne }}</td>
+              <td>{{ qcm.essais }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Les QCM créés</h2>
     </div>
   </div>
   <div v-else>
-    <FunConnexion/>
+    <FunConnexion />
   </div>
 </template>
-
 
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -52,17 +53,51 @@ onMounted(async () => {
     .get(`http://localhost:3000/select_note`)
     .then((response) => {
       let data = response.data;
-    
+
       if (Array.isArray(data)) {
         // Si les données sont sous forme de tableau
         liste_QCM.value = data;
+        calculerStats();
       }
-    })
+    });
 });
+
 const userData = {
   nom: dataStore.pseudo,
 };
+
+const qcmStats = ref([]);
+
+onMounted(() => {
+
+});
+
+// Fonction pour calculer la moyenne et le nombre d'essais pour chaque QCM
+function calculerStats() {
+  const stats = {};
+console.log(liste_QCM.value)
+  for (const qcm of liste_QCM.value) {
+    console.log("la")
+    if (!stats[qcm.libelle]) {
+      console.log("ici")
+      stats[qcm.libelle] = {
+        libelle: qcm.libelle,
+        totalNote: 0,
+        essais: 0
+      };
+    }
+
+    stats[qcm.libelle].totalNote += qcm.note_qcm;
+    stats[qcm.libelle].essais++;
+  }
+  console.log("laolalal")
+  qcmStats.value = Object.values(stats).map(qcm => ({
+    ...qcm,
+    moyenne: qcm.totalNote / qcm.essais
+  }));
+}
 </script>
+
 
 <style scoped>
 .profile-data {

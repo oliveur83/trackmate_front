@@ -15,12 +15,22 @@
 <script setup>
 import { defineProps } from 'vue';
 import { useDataStore } from '../../store/database.js';
+import axios from 'axios';
 const dataStore = useDataStore();
-
+const url = 'http://localhost:3000/select_note';
 const props = defineProps({
   score: Boolean
 });
+const newUser = { note_qcm: props.score, libelle: dataStore.qcm_save, util: dataStore.pseudo}; // Utilisation des valeurs actuelles des références
 
+axios
+  .post(url, newUser)
+  .then((response) => {
+    console.log('Utilisateur ajouté avec succès:', response.data);
+  })
+  .catch((error) => {
+    console.error("Erreur lors de l'ajout de l'utilisateur :", error);
+  });
 
 const login = (ue_selection) => {
 

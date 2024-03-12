@@ -336,28 +336,28 @@
     },
     {
       "nb_reponse": 1,
-      "nb_question": 110,
+      "nb_question": 20,
       "juste_faux": true,
       "libelle": "Le machine learning est un domaine de l'intelligence artificielle qui permet aux ordinateurs d'apprendre à partir de données et de s'améliorer sans être explicitement programmés.",
       "id": "27ba"
     },
     {
       "nb_reponse": 2,
-      "nb_question": 110,
+      "nb_question": 20,
       "juste_faux": false,
       "libelle": "Le machine learning est un processus utilisé pour écrire des algorithmes de recherche avancés.",
       "id": "618d"
     },
     {
       "nb_reponse": 3,
-      "nb_question": 110,
+      "nb_question": 20,
       "juste_faux": false,
       "libelle": "Le machine learning est une technique de compression de données utilisée pour réduire la taille des fichiers.",
       "id": "3224"
     },
     {
       "nb_reponse": 4,
-      "nb_question": 110,
+      "nb_question": 20,
       "juste_faux": false,
       "libelle": "Le machine learning est un ensemble de règles et de procédures utilisées pour optimiser les performances des ordinateurs.",
       "id": "aa8c"
@@ -782,6 +782,42 @@
     {
       "id": "60cb",
       "note_qcm": 3,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "933a",
+      "note_qcm": 7,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "6dd5",
+      "note_qcm": 9,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "5501",
+      "note_qcm": 9,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "6b9b",
+      "note_qcm": 9,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "c380",
+      "note_qcm": 10,
+      "libelle": 0,
+      "util": "admin"
+    },
+    {
+      "id": "8e3f",
+      "note_qcm": 10,
       "libelle": 0,
       "util": "admin"
     }

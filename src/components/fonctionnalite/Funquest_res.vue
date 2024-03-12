@@ -49,7 +49,7 @@ let affichage_result = ref(false);
 let score = 0;
 const num_qcm=dataStore.qcm_save
 onMounted(async () => {
-  console.log("numero qcm ",num_qcm)
+
   //  http://127.0.0.1:8000/select_question
   //http://localhost:3000/questions
   axios.get(`http://localhost:3000/questions-${num_qcm}`).then((response) => {
@@ -87,25 +87,29 @@ const mise_a_jour_question = () => {
   liste_question_actuel.value=liste_question.value.filter(question => question.num_question === numero_question.value);
 }
 const mise_a_jour_reponse = () => {
-  liste_reponse_actuel.value=liste_reponse.value.filter(reponse => reponse.num_question === numero_question.value);console.log(liste_reponse_actuel)
+  liste_reponse_actuel.value=liste_reponse.value.filter(reponse => reponse.num_question === numero_question.value);
 }
 const reponse_passagequestion = (index, juste_faux_res) => {
 
-  click.value = click.value + 1;
-  if (click.value == 2) {
-    numero_question.value = numero_question.value + 1;
-    click.value = 0;
-    mise_a_jour_reponse()
-    mise_a_jour_question()
-  }
+click.value = click.value + 1;
+if (click.value == 2) {
+  numero_question.value = numero_question.value + 1;
+  click.value = 0;
+  mise_a_jour_reponse()
+  mise_a_jour_question()
+  indexr.value = null;
+}
+else{
   indexr.value = index;
-  selectedResponseIndex.value = juste_faux_res;
-  if (selectedResponseIndex.value && click.value == 1) {
-    score = score + 1;
-  }
-  if (numero_question.value == 20) {
-    affichage_result.value = true;
-  }
+selectedResponseIndex.value = juste_faux_res;
+if (selectedResponseIndex.value && click.value == 1) {
+  score = score + 1;
+}
+if (numero_question.value == 20) {
+  affichage_result.value = true;
+}
+}
+
 };
 </script>
 

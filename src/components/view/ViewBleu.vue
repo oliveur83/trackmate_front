@@ -5,7 +5,7 @@ import funins from '../fonctionnalite/FunInscription.vue';
 import funue from '../fonctionnalite/FunUe.vue';
 import funqcm from '../fonctionnalite/FunQcm.vue';
 import funstudy from '../fonctionnalite/FunStudy.vue';
-import { ref,defineProps,watch } from 'vue';
+import { ref, defineProps, watch } from 'vue';
 import { useDataStore } from '../../store/database.js';
 import funProfil from '../fonctionnalite/funProfil.vue';
 
@@ -14,24 +14,21 @@ let vrai_ue = ref('');
 let selectedComponent = ref(dataStore.selection_compo);
 const props = defineProps({
   valeurToto: Boolean,
-  gotomenu: String
+  gotomenu: String,
 });
-
 
 const handleButtonClicked = (pseudoe) => {
   if (pseudoe) {
     selectedComponent.value = 'ue';
-    dataStore.connexion=true
+    dataStore.connexion = true;
   } else {
     alert(' mauvais mot de passe ou pseudo');
   }
 };
-const ecouteins = (buttonName) => {
-
-  console.log('Bouton', buttonName, 'cliqué');
- selectedComponent.value = '';
+const ecouteins = () => {
+  selectedComponent.value = '';
 };
-const ecoute_ue = ( ue) => {
+const ecoute_ue = (ue) => {
   vrai_ue = ue;
   selectedComponent.value = 'Carte';
 };
@@ -40,33 +37,33 @@ const ecoute_qcm_study = (ecout) => {
 };
 const gotocompo = (gotoname) => {
   if (gotoname == 'Connexion') {
-    console.log("titi",selectedComponent)
-    if (dataStore.connexion){
-      selectedComponent.value='ue'
-    }
-    else{
-      console.log("titi 2",selectedComponent)
+    if (dataStore.connexion) {
+      selectedComponent.value = 'ue';
+    } else {
       selectedComponent.value = 'Connexion';
-      console.log("titi 3",selectedComponent)
     }
   } else {
     selectedComponent.value = 'inscription';
   }
 };
-watch(() => props.gotomenu, () => {
-  selectedComponent.value=props.gotomenu
-});
-watch(() => dataStore.selection_compo, (newValue) => {
-  selectedComponent.value = newValue; // Mettez à jour selectedComponent avec la nouvelle valeur
-  
-});
+watch(
+  () => props.gotomenu,
+  () => {
+    selectedComponent.value = props.gotomenu;
+  },
+);
+watch(
+  () => dataStore.selection_compo,
+  (newValue) => {
+    selectedComponent.value = newValue; // Mettez à jour selectedComponent avec la nouvelle valeur
+  },
+);
 </script>
 <template>
   <div>
-    
     <div v-if="valeurToto == true">
-      <funProfil/>
-    </div> 
+      <funProfil />
+    </div>
     <div v-else-if="selectedComponent == 'ue'">
       <funue @buttonClicked="ecoute_ue" />
     </div>

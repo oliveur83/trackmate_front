@@ -42,8 +42,7 @@ onMounted(async () => {
       let data = response.data;
     
       if (Array.isArray(data)) {
-        // Si les données sont sous forme de tableau
-        liste_QCM.value = data;
+      liste_QCM.value = data;
       }
     })
 });

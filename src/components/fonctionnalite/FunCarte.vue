@@ -29,41 +29,45 @@ const links = ref ([
 ]); 
 
 onMounted(async () => {
-//http://127.0.0.1:8000/select_ue
-//http://localhost:3000/ue
 const themeid = dataStore.ue_save;
-axios.get(`http://localhost:3000/ue-${themeid}`)
+axios.get(`http://127.0.0.1:8000/select_uee/${themeid}`)
   .then(response => {
-    // let data = JSON.parse(response.data)
     let data = response.data;
-      if (Array.isArray(data))  {
-        liste_question.value = data.map(obj => {
-          return {
-            libelle: obj.libelle,
-            x: obj.x,
-            y: obj.y,
-            id_ue:obj.id_ue
-          };
-        });
-
-      }
- }); 
- axios.get('http://localhost:3000/trait_ue')
-  .then(response => {
-    // let data = JSON.parse(response.data)
-    let data = response.data;
-   
-      if (Array.isArray(data))  {
-        liste_id_ue_dep_arv.value = data.map(obj => {
-          return {
-            id_dep: obj.id_ue_avant,
-            id_arv: obj.id_ue_apres,
-          }; 
-        });
+    console.log("select ue par theme ",data)
+    if (Array.isArray(data))  {
+      liste_question.value = data.map(obj => {
+        return {
+          libelle: obj.libelle,
+          x: obj.x,
+          y: obj.y,
+          id_ue: obj.id_ue
+        };
+      });
+      console.log(liste_question);
+    }
+    
+    axios.get('http://localhost:3000/trait_ue')
+      .then(response => {
+        let data = response.data;
+        console.log("select_trait par theme ",data)
+        if (Array.isArray(data))  {
+          liste_id_ue_dep_arv.value = data.map(obj => {
+            return {
+              id_dep: obj.id_ue_avant,
+              id_arv: obj.id_ue_apres,
+            }; 
+          });
   
-        toto() 
-      }
- }); 
+          toto();
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors de la deuxième requête axios :', error);
+      });
+  })
+  .catch(error => {
+    console.error('Erreur lors de la première requête axios :', error);
+  });
 
 });
 const toto = () => {

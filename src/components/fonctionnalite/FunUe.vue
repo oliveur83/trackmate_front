@@ -38,8 +38,8 @@ const emit = defineEmits(['buttonClicked']);
 let long_liste_ue_user = 0;
 
 const ue_sel = (ue_selection) => {
-  const theme = liste_ue_json.value.find(theme => theme.libelle === ue_selection);
-  dataStore.setue(theme.id_theme)
+ // const theme = liste_ue_json.value.find(theme => theme.libelle === ue_selection);
+  dataStore.setue(1)
   ajout_theme();
   emit('buttonClicked', 'Carte', ue_selection);
 };
@@ -64,19 +64,18 @@ const ajout_theme = () => {
   }
 };
 
-const ue_select = (ue_libelle, ue_id) => {
+const ue_select = (ue_libelle) => {
   if (!liste_ue_user.value.includes(ue_libelle)) {
     liste_ue_user.value.push(ue_libelle);
   }
-  console.log(ue_id);
+
 };
-//http://127.0.0.1:8000/select_theme
-//http://localhost:3000/theme
+
 axios
-  .get('http://localhost:3000/theme')
+  .get('http://127.0.0.1:8000/select_theme')
   .then((response) => {
-    //let data = JSON.parse(response.data);
-    let data = response.data;
+    let data = JSON.parse(response.data);
+    console.log("select_theme",data)
     if (Array.isArray(data)) {
       data.forEach((obj) => {
         liste_ue_json.value.push({ libelle: obj.libelle, id_theme: obj.id_theme });
@@ -87,9 +86,10 @@ axios
   })
 
 axios
-  .get('http://localhost:3000/util_theme')
+  .get(`http://127.0.0.1:8000/themeutil/${dataStore.id_util}`)
   .then((response) => {
     let data = response.data;
+    console.log("select_theme de utilisateur",data)
     if (Array.isArray(data)) {
       data.forEach((obj) => {
         liste_ue_user.value.push(obj.Theme);
@@ -100,10 +100,7 @@ axios
     }
     long_liste_ue_user = liste_ue_user.value.length;
   })
-  .catch((error) => {
-    // Gérez les erreurs ici
-    console.error('Erreur lors de la récupération des données :', error);
-  });
+ 
 </script>
 
 <style scoped>

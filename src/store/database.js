@@ -6,6 +6,7 @@ export const useDataStore = defineStore('dataStore', {
 
     connexion :false,
     pseudo: String,
+    id_util: String,
     ue_save: String,
     theme_save:String,
     qcm_save:String,
@@ -14,6 +15,9 @@ export const useDataStore = defineStore('dataStore', {
   actions: {
     setpseudo(newData) {
       this.pseudo = newData;
+    },
+    setid_util(newData) {
+      this.id_util = newData;
     },
     setco(newData) {
       this.connexion = newData;

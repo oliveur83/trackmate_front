@@ -55,7 +55,7 @@ onMounted(async () => {
       let data = response.data;
 
       if (Array.isArray(data)) {
-        // Si les données sont sous forme de tableau
+
         liste_QCM.value = data;
         calculerStats();
       }
@@ -71,8 +71,6 @@ const qcmStats = ref([]);
 onMounted(() => {
 
 });
-
-// Fonction pour calculer la moyenne et le nombre d'essais pour chaque QCM
 function calculerStats() {
   const stats = {};
 console.log(liste_QCM.value)
@@ -104,7 +102,7 @@ console.log(liste_QCM.value)
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Pour aligner les éléments horizontalement */
+  align-items: center; 
   justify-content: center; 
   margin: 0 auto;
   padding: 20px;

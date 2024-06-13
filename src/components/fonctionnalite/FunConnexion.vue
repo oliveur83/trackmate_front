@@ -4,18 +4,17 @@
     <div v-if="loading" class="loader"></div>
     <form v-if="!loading" @submit.prevent="login">
       <h1>{{ title }}</h1>
-      <input type="text" placeholder="username" id="username" v-model="username" required>
-      <input type="password" placeholder="password" id="password" v-model="password" required>
-  
+      <input type="text" placeholder="username" id="username" v-model="username" required />
+      <input type="password" placeholder="password" id="password" v-model="password" required />
+
       <button type="submit">Se connecfter</button>
-      <h1 @click="mdp_o">mot de passe oublier </h1>
-      <div v-if="mdp_oublie==true">
-        <h1> entrez un mot nouveau mot de passe </h1>
-        <input type="text" placeholder="new_mdp" id="new_mdp" v-model="username" required>
-        <h1> confirmation du mots de passe </h1>
-        <input type="password" placeholder="conf_mdp" id="conf_mdp" v-model="password" required>
-  
-    </div>
+      <h1 @click="mdp_o">mot de passe oublier</h1>
+      <div v-if="mdp_oublie == true">
+        <h1>entrez un mot nouveau mot de passe</h1>
+        <input type="text" placeholder="new_mdp" id="new_mdp" v-model="username" required />
+        <h1>confirmation du mots de passe</h1>
+        <input type="password" placeholder="conf_mdp" id="conf_mdp" v-model="password" required />
+      </div>
     </form>
   </div>
 </template>
@@ -30,29 +29,26 @@ const title = 'Connexion';
 const username = ref('');
 const password = ref('');
 const loading = ref(false); // État pour le chargement
-const mdp_oublie=ref(false)
+const mdp_oublie = ref(false);
 const mdp_o = () => {
-  mdp_oublie.value=true;
+  mdp_oublie.value = true;
 };
 const login = () => {
-  // Définir loading à true avant la requête
   loading.value = true;
-  ///http://localhost:3000/utilisateur
-  //http://127.0.0.1:8000/select_util
-  axios.get('http://localhost:3000/utilisateur')
-    .then(response => {
-
-      //let obj = JSON.parse(response.data);
-      let obj =response.data
-      // Vérifier si un objet avec un "pseudo" égal à "tom" existe
-      let pseudoe = obj.some(function(item) {
+  axios
+    .get('http://127.0.0.1:8000/select_util')
+    .then((response) => {
+      let obj = JSON.parse(response.data);
+      console.log("select_util",obj)
+      let pseudoe = obj.some(function (item) {
         return item.pseudo === username.value;
       });
-      dataStore.setpseudo(username.value)
+      dataStore.setpseudo(username.value);
+
+      dataStore.setid_util(1);
       emit('buttonClicked', pseudoe);
     })
     .finally(() => {
-      
       loading.value = false;
     });
 };
@@ -65,7 +61,7 @@ const login = () => {
   padding: 20px;
   box-sizing: border-box;
   align-items: center;
-  color:white;
+  color: white;
   position: relative; /* Ajout pour positionner l'overlay par rapport à ce conteneur */
 }
 .overlay {
@@ -79,7 +75,7 @@ const login = () => {
 form {
   display: flex;
   flex-direction: column;
-  background-color: #133D56;
+  background-color: #133d56;
   width: 400px;
   margin: 0 auto;
   align-items: center;
@@ -95,12 +91,12 @@ input {
 }
 button {
   padding: 10px;
-  background-color: #133D56;
+  background-color: #133d56;
   color: white;
   border: none;
   cursor: pointer;
 }
 button:hover {
-  background-color: #133D56;
+  background-color: #133d56;
 }
 </style>

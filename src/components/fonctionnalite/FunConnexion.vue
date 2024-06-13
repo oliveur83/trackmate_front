@@ -23,36 +23,61 @@
 import { ref, defineEmits } from 'vue';
 import axios from 'axios';
 import { useDataStore } from '../../store/database.js';
+
 const dataStore = useDataStore();
 const emit = defineEmits(['buttonClicked']);
 const title = 'Connexion';
 const username = ref('');
 const password = ref('');
-const loading = ref(false); // État pour le chargement
+const loading = ref(false);
 const mdp_oublie = ref(false);
+
 const mdp_o = () => {
   mdp_oublie.value = true;
 };
+
 const login = () => {
   loading.value = true;
-  axios
-    .get('http://127.0.0.1:8000/select_util')
-    .then((response) => {
-      let obj = JSON.parse(response.data);
-      console.log("select_util",obj)
-      let pseudoe = obj.some(function (item) {
-        return item.pseudo === username.value;
-      });
-      dataStore.setpseudo(username.value);
 
-      dataStore.setid_util(1);
+  axios.get('http://127.0.0.1:8000/select_util')
+    .then((response) => {
+      const utilisateurs =JSON.parse(response.data);
+      console.log("Utilisateurs récupérés :", utilisateurs);
+
+      // Vérification si l'utilisateur existe dans la liste
+      let pseudoe = false;
+      for (let i = 0; i < utilisateurs.length; i++) {
+        console.log(utilisateurs[i])
+        if (utilisateurs[i].pseudo === username.value) {
+          pseudoe = true;
+          break; // Sortir de la boucle dès qu'on trouve l'utilisateur
+        }
+      }
+
+      // Enregistrement des données dans le data store
+      if (pseudoe) {
+        dataStore.setpseudo(username.value);
+        // Vous devez déterminer comment obtenir l'ID correctement depuis vos données utilisateur
+        const utilisateurTrouve = utilisateurs.find(u => u.pseudo === username.value);
+        if (utilisateurTrouve) {
+          dataStore.setid_util(utilisateurTrouve.id);
+        }
+      }
+
+      // Émission de l'événement 'buttonClicked' avec le résultat de la vérification
       emit('buttonClicked', pseudoe);
+    })
+    .catch((error) => {
+      console.error('Erreur lors de la récupération des utilisateurs :', error);
+      // Gestion des erreurs, par exemple afficher un message à l'utilisateur
     })
     .finally(() => {
       loading.value = false;
     });
 };
 </script>
+
+
 
 <style scoped>
 .didi {

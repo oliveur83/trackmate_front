@@ -3,14 +3,13 @@ import { defineStore } from 'pinia';
 
 export const useDataStore = defineStore('dataStore', {
   state: () => ({
-
-    connexion :false,
+    connexion: false,
     pseudo: String,
     id_util: String,
     ue_save: String,
-    theme_save:String,
-    qcm_save:String,
-    selection_compo:''
+    theme_save: String,
+    qcm_save: String,
+    selection_compo: '',
   }),
   actions: {
     setpseudo(newData) {

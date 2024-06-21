@@ -47,9 +47,8 @@ const indexr = ref(null);
 let click = ref(0);
 let affichage_result = ref(false);
 let score = 0;
-const num_qcm=dataStore.qcm_save
+const num_qcm = dataStore.qcm_save;
 onMounted(async () => {
-
   //  http://127.0.0.1:8000/select_question
   //http://localhost:3000/questions
   axios.get(`http://localhost:3000/questions-${num_qcm}`).then((response) => {
@@ -63,7 +62,7 @@ onMounted(async () => {
           num_question: obj.num_question,
         };
       });
-      mise_a_jour_question()
+      mise_a_jour_question();
     }
   });
   axios.get(`http://localhost:3000/reponses-${num_qcm}`).then((response) => {
@@ -78,43 +77,43 @@ onMounted(async () => {
           juste_faux: obj.juste_faux,
         };
       });
-      mise_a_jour_reponse()
+      mise_a_jour_reponse();
     }
   });
-  
 });
 const mise_a_jour_question = () => {
-  liste_question_actuel.value=liste_question.value.filter(question => question.num_question === numero_question.value);
-}
+  liste_question_actuel.value = liste_question.value.filter(
+    (question) => question.num_question === numero_question.value,
+  );
+};
 const mise_a_jour_reponse = () => {
-  liste_reponse_actuel.value=liste_reponse.value.filter(reponse => reponse.num_question === numero_question.value);
-}
+  liste_reponse_actuel.value = liste_reponse.value.filter(
+    (reponse) => reponse.num_question === numero_question.value,
+  );
+};
 const reponse_passagequestion = (index, juste_faux_res) => {
-
-click.value = click.value + 1;
-if (click.value == 2) {
-  numero_question.value = numero_question.value + 1;
-  click.value = 0;
-  mise_a_jour_reponse()
-  mise_a_jour_question()
-  indexr.value = null;
-}
-else{
-  indexr.value = index;
-selectedResponseIndex.value = juste_faux_res;
-if (selectedResponseIndex.value && click.value == 1) {
-  score = score + 1;
-}
-if (numero_question.value == 20) {
-  affichage_result.value = true;
-}
-}
-
+  click.value = click.value + 1;
+  if (click.value == 2) {
+    numero_question.value = numero_question.value + 1;
+    click.value = 0;
+    mise_a_jour_reponse();
+    mise_a_jour_question();
+    indexr.value = null;
+  } else {
+    indexr.value = index;
+    selectedResponseIndex.value = juste_faux_res;
+    if (selectedResponseIndex.value && click.value == 1) {
+      score = score + 1;
+    }
+    if (numero_question.value == 20) {
+      affichage_result.value = true;
+    }
+  }
 };
 </script>
 
 <style scoped>
-.qcm { 
+.qcm {
   width: 100%;
   display: flex;
   align-items: center;
@@ -142,8 +141,8 @@ if (numero_question.value == 20) {
   border-radius: 10px;
 }
 .selected {
-  background-color: #4caf50; 
-  color: white; 
+  background-color: #4caf50;
+  color: white;
 }
 .res {
   width: 100%;
@@ -155,6 +154,6 @@ if (numero_question.value == 20) {
 }
 .nonselect {
   background-color: #d70036;
-  color: white; 
+  color: white;
 }
 </style>

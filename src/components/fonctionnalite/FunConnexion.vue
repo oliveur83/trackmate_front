@@ -38,16 +38,17 @@ const mdp_o = () => {
 
 const login = () => {
   loading.value = true;
-
-  axios.get('http://127.0.0.1:8000/select_util')
+  console.log('requete');
+  axios
+    .get('http://127.0.0.1:8000/select_util')
     .then((response) => {
-      const utilisateurs =JSON.parse(response.data);
-      console.log("Utilisateurs récupérés :", utilisateurs);
+      const utilisateurs = JSON.parse(response.data);
+      console.log('Utilisateurs récupérés :', utilisateurs);
 
       // Vérification si l'utilisateur existe dans la liste
       let pseudoe = false;
       for (let i = 0; i < utilisateurs.length; i++) {
-        console.log(utilisateurs[i])
+        console.log(utilisateurs[i]);
         if (utilisateurs[i].pseudo === username.value) {
           pseudoe = true;
           break; // Sortir de la boucle dès qu'on trouve l'utilisateur
@@ -58,7 +59,7 @@ const login = () => {
       if (pseudoe) {
         dataStore.setpseudo(username.value);
         // Vous devez déterminer comment obtenir l'ID correctement depuis vos données utilisateur
-        const utilisateurTrouve = utilisateurs.find(u => u.pseudo === username.value);
+        const utilisateurTrouve = utilisateurs.find((u) => u.pseudo === username.value);
         if (utilisateurTrouve) {
           dataStore.setid_util(utilisateurTrouve.id);
         }
@@ -76,8 +77,6 @@ const login = () => {
     });
 };
 </script>
-
-
 
 <style scoped>
 .didi {

@@ -36,23 +36,20 @@ let question = ref(false);
 const liste_QCM = ref([]);
 let num_qcm = ref(0);
 onMounted(async () => {
-  axios
-    .get(`http://localhost:3000/qcms-${themeid}`)
-    .then((response) => {
-      let data = response.data;
-    
-      if (Array.isArray(data)) {
+  axios.get(`http://localhost:3000/qcms-${themeid}`).then((response) => {
+    let data = response.data;
+
+    if (Array.isArray(data)) {
       liste_QCM.value = data;
-      }
-    })
+    }
+  });
 });
 
 const passe_question = (num_qcmm) => {
   question.value = true;
   num_qcm.value = num_qcmm;
-  console.log("value",num_qcm.value)
-  dataStore.setqcm(num_qcm.value)
-
+  console.log('value', num_qcm.value);
+  dataStore.setqcm(num_qcm.value);
 };
 </script>
 

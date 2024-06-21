@@ -49,17 +49,14 @@ const data = dataStore.connexion;
 const liste_QCM = ref([]);
 
 onMounted(async () => {
-  axios
-    .get(`http://localhost:3000/select_note`)
-    .then((response) => {
-      let data = response.data;
+  axios.get(`http://localhost:3000/select_note`).then((response) => {
+    let data = response.data;
 
-      if (Array.isArray(data)) {
-
-        liste_QCM.value = data;
-        calculerStats();
-      }
-    });
+    if (Array.isArray(data)) {
+      liste_QCM.value = data;
+      calculerStats();
+    }
+  });
 });
 
 const userData = {
@@ -68,42 +65,39 @@ const userData = {
 
 const qcmStats = ref([]);
 
-onMounted(() => {
-
-});
+onMounted(() => {});
 function calculerStats() {
   const stats = {};
-console.log(liste_QCM.value)
+  console.log(liste_QCM.value);
   for (const qcm of liste_QCM.value) {
-    console.log("la")
+    console.log('la');
     if (!stats[qcm.libelle]) {
-      console.log("ici")
+      console.log('ici');
       stats[qcm.libelle] = {
         libelle: qcm.libelle,
         totalNote: 0,
-        essais: 0
+        essais: 0,
       };
     }
 
     stats[qcm.libelle].totalNote += qcm.note_qcm;
     stats[qcm.libelle].essais++;
   }
-  console.log("laolalal")
-  qcmStats.value = Object.values(stats).map(qcm => ({
+  console.log('laolalal');
+  qcmStats.value = Object.values(stats).map((qcm) => ({
     ...qcm,
-    moyenne: qcm.totalNote / qcm.essais
+    moyenne: qcm.totalNote / qcm.essais,
   }));
 }
 </script>
-
 
 <style scoped>
 .profile-data {
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -129,7 +123,8 @@ h2 {
 .stats p {
   margin: 5px 0;
   font-size: 1.2rem;
-}.section {
+}
+.section {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -175,5 +170,4 @@ h2 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 </style>

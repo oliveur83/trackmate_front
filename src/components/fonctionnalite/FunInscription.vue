@@ -30,7 +30,7 @@ const url = 'http://localhost:3000/utilisateur';
 const register = () => {
   if (username.value.trim() === '' || password.value !== confirmPassword.value) {
     console.error("Nom d'utilisateur vide ou les mots de passe ne correspondent pas");
-    return; 
+    return;
   }
 
   const newUser = { pseudo: username.value, password: password.value }; // Utilisation des valeurs actuelles des références
@@ -45,7 +45,6 @@ const register = () => {
     });
   emit('buttonClicked', 'inscription');
 };
-
 </script>
 
 <style scoped>

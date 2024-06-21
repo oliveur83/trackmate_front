@@ -1,23 +1,23 @@
 <!-- App.vue -->
 <template>
   <div id="app">
-    <MonPremierComposant />
+    <ViewPrincipal />
   </div>
 </template>
 
 <script>
-import MonPremierComposant from './components//view/ViewPrincipal.vue';
+import ViewPrincipal from './components//view/ViewPrincipal.vue';
 
 export default {
   components: {
-    MonPremierComposant,
+    ViewPrincipal,
   },
 };
 </script>
 
 <style>
-body, html {
+body,
+html {
   height: 100%;
-
 }
 </style>

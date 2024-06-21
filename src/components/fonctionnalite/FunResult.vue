@@ -1,11 +1,12 @@
 <template>
-   <div class="semi-circle" :style="{ backgroundColor: getBackgroundColor(props.score) }">
+  <div class="semi-circle" :style="{ backgroundColor: getBackgroundColor(props.score) }">
     <div class="content">{{ props.score * 10 }}%</div>
   </div>
   <div class="star-container">
     <div v-for="index in props.score" :key="index" class="star">⭐</div>
   </div>
-  <h2>Bravo</h2><br />
+  <h2>Bravo</h2>
+  <br />
   <button>Relire les questions</button>
   <div class="menu_bar">
     <button class="action-btn" @click="login('Carte')">Quizz</button>
@@ -19,9 +20,9 @@ import axios from 'axios';
 const dataStore = useDataStore();
 const url = 'http://localhost:3000/select_note';
 const props = defineProps({
-  score: Boolean
+  score: Boolean,
 });
-const newUser = { note_qcm: props.score, libelle: dataStore.qcm_save, util: dataStore.pseudo}; // Utilisation des valeurs actuelles des références
+const newUser = { note_qcm: props.score, libelle: dataStore.qcm_save, util: dataStore.pseudo }; // Utilisation des valeurs actuelles des références
 
 axios
   .post(url, newUser)
@@ -33,20 +34,19 @@ axios
   });
 
 const login = (ue_selection) => {
-
-  dataStore.setselection_compo(ue_selection)
-  console.log(dataStore.selection_compo)
+  dataStore.setselection_compo(ue_selection);
+  console.log(dataStore.selection_compo);
 };
 const getBackgroundColor = (score) => {
- const hue = (score / 10) * 120; 
-  return `hsl(${hue}, 100%, 50%)` ;
+  const hue = (score / 10) * 120;
+  return `hsl(${hue}, 100%, 50%)`;
 };
 </script>
 <style>
 .star {
-  font-size: 2rem; 
+  font-size: 2rem;
   margin-right: 5px;
-  display: flex; 
+  display: flex;
 }
 .semi-circle {
   width: 20rem;
@@ -67,7 +67,7 @@ const getBackgroundColor = (score) => {
   bottom: 0;
 }
 .content {
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 .star-container {
   display: flex;

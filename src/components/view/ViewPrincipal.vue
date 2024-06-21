@@ -6,25 +6,24 @@
       <img src="../../assets/profil.png" alt="Description de l'image" @click="afficherProfil" />
     </div>
 
-    <carrebleu :valeurToto="toto" :gotomenu="backtomenu" />
+    <ViewBleu :isprofil="isprofil" :gotomenu="backtomenu" />
   </div>
 </template>
 
 <script setup>
-import carrebleu from './ViewBleu.vue'; // Importez le composant enfant correctement
+import ViewBleu from './ViewBleu.vue'; // Importez le composant enfant correctement
 import { ref } from 'vue';
 
-let toto = ref(false);
+let isprofil = ref(false);
 let backtomenu = ref('');
 const afficherProfil = () => {
-  toto.value = !toto.value;
+  isprofil.value = !isprofil.value;
 };
 const retourmenu = () => {
   if (backtomenu.value == '') {
     backtomenu.value = 'toto';
   } else {
     backtomenu.value = '';
-    
   }
 };
 </script>

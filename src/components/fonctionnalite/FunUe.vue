@@ -38,13 +38,12 @@ const emit = defineEmits(['buttonClicked']);
 let long_liste_ue_user = 0;
 
 const ue_sel = (ue_selection) => {
- // const theme = liste_ue_json.value.find(theme => theme.libelle === ue_selection);
-  dataStore.setue(1)
+  // const theme = liste_ue_json.value.find(theme => theme.libelle === ue_selection);
+  dataStore.setue(1);
   ajout_theme();
   emit('buttonClicked', 'Carte', ue_selection);
 };
 const ajout_theme = () => {
- 
   if (long_liste_ue_user !== liste_ue_user.value.length) {
     liste_ue_user.value.forEach((objet) => {
       if (!liste_ue_user_save.value.some((savedObj) => savedObj.libelle === objet)) {
@@ -68,39 +67,33 @@ const ue_select = (ue_libelle) => {
   if (!liste_ue_user.value.includes(ue_libelle)) {
     liste_ue_user.value.push(ue_libelle);
   }
-
 };
 
-axios
-  .get('http://127.0.0.1:8000/select_theme')
-  .then((response) => {
-    let data = JSON.parse(response.data);
-    console.log("select_theme",data)
-    if (Array.isArray(data)) {
-      data.forEach((obj) => {
-        liste_ue_json.value.push({ libelle: obj.libelle, id_theme: obj.id_theme });
-      });
-    } else {
-      console.error("La réponse n'est pas un tableau valide.");
-    }
-  })
+axios.get('http://127.0.0.1:8000/select_theme').then((response) => {
+  let data = JSON.parse(response.data);
+  console.log('select_theme', data);
+  if (Array.isArray(data)) {
+    data.forEach((obj) => {
+      liste_ue_json.value.push({ libelle: obj.libelle, id_theme: obj.id_theme });
+    });
+  } else {
+    console.error("La réponse n'est pas un tableau valide.");
+  }
+});
 
-axios
-  .get(`http://127.0.0.1:8000/themeutil/${dataStore.id_util}`)
-  .then((response) => {
-    let data = response.data;
-    console.log("select_theme de utilisateur",data)
-    if (Array.isArray(data)) {
-      data.forEach((obj) => {
-        liste_ue_user.value.push(obj.Theme);
-        liste_ue_user_save.value.push(obj.Theme);
-      });
-    } else {
-      console.error("La réponse n'est pas un tableau valide.");
-    }
-    long_liste_ue_user = liste_ue_user.value.length;
-  })
- 
+axios.get(`http://127.0.0.1:8000/themeutil/${dataStore.id_util}`).then((response) => {
+  let data = response.data;
+  console.log('select_theme de utilisateur', data);
+  if (Array.isArray(data)) {
+    data.forEach((obj) => {
+      liste_ue_user.value.push(obj.Theme);
+      liste_ue_user_save.value.push(obj.Theme);
+    });
+  } else {
+    console.error("La réponse n'est pas un tableau valide.");
+  }
+  long_liste_ue_user = liste_ue_user.value.length;
+});
 </script>
 
 <style scoped>

@@ -1,5 +1,36 @@
+<template>
+  <div>
+    <div v-if="isprofil == true">
+      <funProfil />
+    </div>
+    <div v-else-if="selectedComponent == 'ue'">
+      <funue @buttonClicked="emitUe" />
+    </div>
+    <div v-else-if="selectedComponent == 'Carte'">
+      <funcar :ue_choisie="ue_choisie" @buttonClicked="emit_qcm_study" />
+    </div>
+    <div v-else-if="selectedComponent == 'Connexion'">
+      <funconnexion @buttonClicked="emitselectionue" />
+    </div>
+    <div v-else-if="selectedComponent == 'QCM'">
+      <funqcm />
+    </div>
+    <div v-else-if="selectedComponent == 'study'">
+      <funstudy />
+    </div>
+    <div v-else-if="selectedComponent == 'inscription'">
+      <funins @buttonClicked="ecouteinscription" />
+    </div>
+    <div v-else>
+      <div class="button-container">
+        <button class="action-btn" @click="gotocompo('Connexion')">Connexion</button>
+        <button class="action-btn" @click="gotocompo('inscription')">Inscription</button>
+      </div>
+    </div>
+  </div>
+</template>
 <script setup>
-import EnfantComponent from '../fonctionnalite/FunConnexion.vue';
+import funconnexion from '../fonctionnalite/FunConnexion.vue';
 import funcar from '../fonctionnalite/FunCarte.vue';
 import funins from '../fonctionnalite/FunInscription.vue';
 import funue from '../fonctionnalite/FunUe.vue';
@@ -10,14 +41,14 @@ import { useDataStore } from '../../store/database.js';
 import funProfil from '../fonctionnalite/funProfil.vue';
 
 const dataStore = useDataStore();
-let vrai_ue = ref('');
+let ue_choisie = ref('');
 let selectedComponent = ref(dataStore.selection_compo);
 const props = defineProps({
-  valeurToto: Boolean,
+  isprofil: Boolean,
   gotomenu: String,
 });
 
-const handleButtonClicked = (pseudoe) => {
+const emitselectionue = (pseudoe) => {
   if (pseudoe) {
     selectedComponent.value = 'ue';
     dataStore.connexion = true;
@@ -25,14 +56,14 @@ const handleButtonClicked = (pseudoe) => {
     alert(' mauvais mot de passe ou pseudo');
   }
 };
-const ecouteins = () => {
+const ecouteinscription = () => {
   selectedComponent.value = '';
 };
-const ecoute_ue = (ue) => {
-  vrai_ue = ue;
+const emitUe = (ue) => {
+  ue_choisie = ue;
   selectedComponent.value = 'Carte';
 };
-const ecoute_qcm_study = (ecout) => {
+const emit_qcm_study = (ecout) => {
   selectedComponent.value = ecout;
 };
 const gotocompo = (gotoname) => {
@@ -55,41 +86,10 @@ watch(
 watch(
   () => dataStore.selection_compo,
   (newValue) => {
-    selectedComponent.value = newValue; // Mettez à jour selectedComponent avec la nouvelle valeur
+    selectedComponent.value = newValue;
   },
 );
 </script>
-<template>
-  <div>
-    <div v-if="valeurToto == true">
-      <funProfil />
-    </div>
-    <div v-else-if="selectedComponent == 'ue'">
-      <funue @buttonClicked="ecoute_ue" />
-    </div>
-    <div v-else-if="selectedComponent == 'Carte'">
-      <funcar :ue_choisie="vrai_ue" @buttonClicked="ecoute_qcm_study" />
-    </div>
-    <div v-else-if="selectedComponent == 'Connexion'">
-      <EnfantComponent @buttonClicked="handleButtonClicked" />
-    </div>
-    <div v-else-if="selectedComponent == 'QCM'">
-      <funqcm />
-    </div>
-    <div v-else-if="selectedComponent == 'study'">
-      <funstudy />
-    </div>
-    <div v-else-if="selectedComponent == 'inscription'">
-      <funins @buttonClicked="ecouteins" />
-    </div>
-    <div v-else>
-      <div class="button-container">
-        <button class="action-btn" @click="gotocompo('Connexion')">Connexion</button>
-        <button class="action-btn" @click="gotocompo('inscription')">Inscription</button>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 div {
